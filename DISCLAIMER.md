@@ -1,6 +1,6 @@
 # Legal Disclaimer & Acceptable Use Policy
 
-**Last Updated:** October 2024  
+**Last Updated:** October 2026  
 **Project:** `ziara-lead-scrapper`  
 **Authors:** Ziara TechQ Labs & Project Contributors  
 
@@ -34,17 +34,19 @@ Depending on your jurisdiction and how you handle collected data, processing com
 
 **You are solely and exclusively responsible for ensuring compliance with all applicable laws**, including without limitation:
 
-1. **General Data Protection Regulation (GDPR) (EU/EEA):**  
+1. **Digital Personal Data Protection Act, 2023 (DPDP Act) & IT Act, 2000 (India):**  
+   Ensure that any personal data or business contact information is processed solely for lawful purposes, adhering to statutory data principal consent or recognized legitimate use provisions, and respecting data subject rights to withdrawal and grievance redressal under Indian law.
+2. **General Data Protection Regulation (GDPR) (EU/EEA):**  
    Ensure that any collection, storage, or processing of personal or business contact data has a valid lawful basis (such as Legitimate Interest under Art. 6(1)(f)), that data subjects' rights are respected, and that immediate opt-out/deletion mechanisms are provided.
-2. **CAN-SPAM Act (15 U.S.C. § 7701 et seq.) (United States):**  
+3. **CAN-SPAM Act (15 U.S.C. § 7701 et seq.) (United States):**  
    Any commercial electronic communication must feature truthful headers, clear non-deceptive subject lines, physical postal address identification, and a functioning opt-out/unsubscribe mechanism.
-3. **Telephone Consumer Protection Act (TCPA) (United States):**  
+4. **Telephone Consumer Protection Act (TCPA) (United States):**  
    Strict prohibitions against unsolicited automated dialing, telemarketing, or SMS messaging to phone numbers without prior express consent.
-4. **Canadian Anti-Spam Legislation (CASL) (Canada):**  
+5. **Canadian Anti-Spam Legislation (CASL) (Canada):**  
    Requirements governing Commercial Electronic Messages (CEMs) and applicable business-to-business consent exemptions.
-5. **California Consumer Privacy Act (CCPA / CPRA) (California, USA):**  
+6. **California Consumer Privacy Act (CCPA / CPRA) (California, USA):**  
    Mandatory compliance with consumer notice, right to opt-out, and right of deletion.
-6. **Local Telecommunication & Marketing Directives:**  
+7. **Local Telecommunication & Marketing Directives:**  
    Any equivalent statutory frameworks governing commercial solicitation in your relevant territory.
 
 ---

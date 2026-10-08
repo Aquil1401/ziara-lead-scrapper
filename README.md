@@ -31,7 +31,7 @@
 
 `ziara-lead-scrapper` is a high-performance, developer-friendly command-line tool built by **Ziara TechQ Labs** that extracts local B2B leads from Google Maps without requiring API keys, Docker containers, or Python runtimes.
 
-Collect business names, phone numbers, addresses, ratings, websites, and automatically enrich leads with verified email addresses and social handles (LinkedIn, Twitter/X, Instagram, Facebook).
+Collect business names, phone numbers, addresses, ratings, websites, and automatically enrich leads with public contact email addresses and social handles (LinkedIn, Twitter/X, Instagram, Facebook).
 
 ---
 
@@ -106,7 +106,7 @@ ziara-lead-scrapper -q "SaaS Founders in Austin" -l 100 --enrich -o json
   ─────────────────────────────────────────
 
   ✔ Scraping complete! Collected 50 leads.
-  ✔ Saved → ziara-dentists-in-south-delhi-2024-05-01T12-00-00.csv
+  ✔ Saved → ziara-dentists-in-south-delhi-2026-10-08T12-00-00.csv
 
   ─────────────────────────────────────────
   ✔  Done! 50 leads collected.
@@ -178,12 +178,14 @@ npx ziara-lead-scrapper -q "Bakeries in Paris" -l 10
 # 2. Lead Generation: Collect 100 marketing agencies in London with emails & socials
 npx ziara-lead-scrapper -q "Marketing Agencies in London" -l 100 --enrich -o json
 
-# 3. High Volume: 200 real estate brokers in Miami saved as CSV
-npx ziara-lead-scrapper -q "Real Estate Brokers in Miami" -l 200 --enrich -o csv
+# 3. High Volume: 100 real estate brokers in Miami saved as CSV
+npx ziara-lead-scrapper -q "Real Estate Brokers in Miami" -l 100 --enrich -o csv
 
 # 4. Debug Mode: Open visible browser window (solve CAPTCHAs manually if needed)
 npx ziara-lead-scrapper -q "Gyms in Dubai" -l 20 --headless false
 ```
+
+> **💡 Tip on Google Maps limits:** Google Maps naturally caps infinite scroll at ~120 listings per individual search query before reaching the end of results. To scrape hundreds or thousands of leads in a city, partition your queries into specific neighborhoods, sub-districts, or pincodes (e.g. `"Gyms in Downtown Miami"`, `"Gyms in Brickell"`, `"Gyms in Miami Beach"`).
 
 ---
 
@@ -192,7 +194,7 @@ npx ziara-lead-scrapper -q "Gyms in Dubai" -l 20 --headless false
 Scraping dynamic web applications requires evasion techniques to avoid IP rate limits and automated blocking:
 
 - **Webdriver Masking** — Overrides `navigator.webdriver`, `navigator.plugins`, and `navigator.languages` to emulate a genuine human browser environment.
-- **User-Agent Fingerprinting** — Rotates realistic modern desktop user agents (Chrome, Safari, Firefox).
+- **User-Agent Fingerprinting** — Rotates realistic modern desktop Chrome/Chromium user agents matched to the browser engine.
 - **Human Jitter & Delays** — Adds randomized pauses (800ms–2500ms) between scroll operations and listing transitions.
 - **Infinite Feed Interaction** — Dispatches native wheel events and DOM scroll triggers to ensure smooth pagination.
 - **CAPTCHA & Block Detection** — Gracefully detects bot challenges and warns the user with actionable mitigation advice instead of failing silently.
@@ -245,6 +247,7 @@ Yes. Built on Node.js 18+ and Playwright, it runs on all major operating systems
 
 ### 3. Data Protection & Cold Outreach Compliance
 If you extract contact details for commercial or outreach purposes, you are solely responsible for compliance with relevant local and international statutes:
+- **DPDP Act 2023 & IT Act 2000 (India):** Ensure personal data is processed lawfully with valid consent or recognized legitimate use, honoring data principal rights.
 - **GDPR (European Union):** Ensure a documented lawful basis (e.g., Legitimate Interest under Art. 6(1)(f)) for processing B2B contacts, honor opt-outs, and uphold data subject rights.
 - **CAN-SPAM Act (United States):** Provide honest email headers, non-deceptive subject lines, physical mailing address, and functional unsubscribe mechanisms.
 - **TCPA (United States):** Absolute prohibition against unsolicited automated dialing or SMS to telephone numbers without prior express consent.
@@ -300,4 +303,4 @@ If `ziara-lead-scrapper` saved your team hours of manual research or hundreds of
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE) © 2024 **Ziara TechQ Labs** & [Aquil1401](https://github.com/Aquil1401).
+This project is licensed under the [MIT License](LICENSE) © 2026 **Ziara TechQ Labs** & [Aquil1401](https://github.com/Aquil1401).

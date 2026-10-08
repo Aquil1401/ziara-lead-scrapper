@@ -4,7 +4,9 @@
   "description": "Zero-config, open-source Google Maps lead scraper CLI. No Docker. No Python. No paid APIs.",
   "keywords": [
     "google-maps",
+    "google-maps-scraper",
     "scraper",
+    "lead-scraper",
     "lead-generation",
     "cli",
     "playwright",
@@ -29,7 +31,8 @@
   "files": [
     "dist/**/*",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "DISCLAIMER.md"
   ],
   "engines": {
     "node": ">=18.0.0"
@@ -37,6 +40,7 @@
   "scripts": {
     "build": "tsc --project tsconfig.json",
     "typecheck": "tsc --noEmit",
+    "test": "tsc --noEmit",
     "dev": "ts-node --project tsconfig.json bin/index.ts",
     "start": "node dist/bin/index.js",
     "clean": "rimraf dist",
@@ -45,17 +49,15 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "cheerio": "^1.0.0",
     "chalk": "^4.1.2",
+    "cheerio": "^1.0.0",
     "commander": "^12.1.0",
     "csv-writer": "^1.6.0",
     "ora": "^5.4.1",
-    "playwright": "^1.48.0",
-    "node-fetch": "^2.7.0"
+    "playwright": "^1.48.0"
   },
   "devDependencies": {
     "@types/node": "^20.17.0",
-    "@types/node-fetch": "^2.6.11",
     "rimraf": "^5.0.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"

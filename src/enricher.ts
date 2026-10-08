@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-import https from 'https';
 import * as cheerio from 'cheerio';
 import type { SocialHandles } from './types';
 
@@ -30,10 +28,6 @@ const IGNORED_SOCIAL_PATHS = [
   '/v2.',
 ];
 
-const httpsAgent = new https.Agent({
-  rejectUnauthorized: false,
-});
-
 export interface EnrichResult {
   email: string;
   socials: SocialHandles;
@@ -56,15 +50,12 @@ async function fetchHtml(url: string): Promise<string> {
   try {
     const targetUrl = normaliseUrl(url);
     const response = await fetch(targetUrl, {
-      signal: controller.signal as any,
-      timeout: TIMEOUT_MS,
-      agent: (parsedUrl) => (parsedUrl.protocol === 'https:' ? httpsAgent : undefined),
+      signal: controller.signal,
       headers: {
         'User-Agent':
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36',
         Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.9',
-        Connection: 'keep-alive',
       },
       redirect: 'follow',
     });
