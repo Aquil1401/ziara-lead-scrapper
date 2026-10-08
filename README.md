@@ -13,11 +13,13 @@
 
 <p align="center">
   <a href="#-quickstart-zero-install">Quickstart</a> •
+  <a href="#-why-it-exists">Why It Exists</a> •
   <a href="#-features">Features</a> •
-  <a href="#️-options">Options</a> •
+  <a href="#️-options--flags">Options</a> •
   <a href="#-output-fields">Output Fields</a> •
   <a href="#-anti-bot-stealth">Stealth</a> •
-  <a href="#-legal-ethical-use--compliance">Legal & Compliance</a> •
+  <a href="#-responsible-use--rate-limiting">Responsible Use</a> •
+  <a href="#-legal-ethical-use--compliance">Legal</a> •
   <a href="#-support--sponsorship">Sponsor</a>
 </p>
 
@@ -30,6 +32,29 @@
 `ziara-lead-scrapper` is a high-performance, developer-friendly command-line tool built by **Ziara TechQ Labs** that extracts local B2B leads from Google Maps without requiring API keys, Docker containers, or Python runtimes.
 
 Collect business names, phone numbers, addresses, ratings, websites, and automatically enrich leads with verified email addresses and social handles (LinkedIn, Twitter/X, Instagram, Facebook).
+
+---
+
+## 💡 Why It Exists
+
+Standard HTTP scrapers and AI chat models fail when querying Google Maps because Google serves heavy JavaScript-rendered feeds, international cookie consent barriers, and dynamic scroll containers.
+
+Other open-source tools require complex setup: installing **Docker Desktop**, running background container daemons, or configuring Python virtual environments.
+
+`ziara-lead-scrapper` eliminates all friction: **one `npx` command executes everything locally** via native Playwright headless browser orchestration.
+
+### 🥊 How It Compares
+
+| Feature | `ziara-lead-scrapper` | Other Scraper Kits | Paid Cloud Scraping SaaS |
+| :--- | :---: | :---: | :---: |
+| **Setup Friction** | **Zero (`npx`)** | High (Docker compose) | High (Sign up / Setup) |
+| **Docker Required?** | ❌ **No Docker** | ✅ Required | ❌ No |
+| **Python Required?** | ❌ **No Python** | Optional/Scripts | ❌ No |
+| **API Keys / Cost** | 🆓 **$0.00 / Free** | 🆓 Free | 💳 $49 – $299 / month |
+| **Email Enrichment** | ✅ **Built-in (`--enrich`)** | Extra scripting | Extra per-credit cost |
+| **Social Links** | ✅ **LinkedIn, X, IG, FB** | Limited | Often extra fee |
+| **Data Privacy** | 🔒 **100% Local Machine** | 🔒 Local Machine | ⚠️ Shared with 3rd party |
+| **Output Formats** | **CSV & JSON** | CSV only | CSV / JSON |
 
 ---
 
@@ -175,6 +200,39 @@ Scraping dynamic web applications requires evasion techniques to avoid IP rate l
 
 ---
 
+## 🤝 Responsible Use & Rate Limiting
+
+This tool operates a headless browser against publicly accessible pages. Follow these best practices:
+
+- **Start Small:** Begin with `--limit 20` or `--limit 50` before scraping large batches.
+- **Keep Concurrency Low:** Default concurrency is `1`. Running too many parallel tabs will trigger rate limiting on your IP.
+- **Understand Rate Limits:** If Google displays a challenge, rate limits are **strictly temporary and IP-based** (usually resetting within minutes to hours). Your Google account is never impacted because no login credentials are used.
+- **Manual Resolution:** If challenged, re-run with `--headless false` to inspect or solve challenges manually.
+
+---
+
+## ❓ Frequently Asked Questions (FAQ)
+
+<details>
+<summary><b>Does this tool require Google API keys or billing?</b></summary>
+<br>
+No. <code>ziara-lead-scrapper</code> does not use Google Places API and requires no Google Cloud account, API tokens, or billing cards.
+</details>
+
+<details>
+<summary><b>Why are some email addresses or social links blank?</b></summary>
+<br>
+When <code>--enrich</code> is active, the tool crawls the official website declared in the listing. If the business does not publish a contact email or social handle on their site (or uses a contact form only), the field remains clean and empty. We never generate fictitious guesses.
+</details>
+
+<details>
+<summary><b>Does it work on Windows, macOS, and Linux?</b></summary>
+<br>
+Yes. Built on Node.js 18+ and Playwright, it runs on all major operating systems.
+</details>
+
+---
+
 ## ⚖️ Legal, Ethical Use & Compliance
 
 > **IMPORTANT NOTICE:** This project is provided strictly for **educational, technical demonstration, and academic research purposes**. Users assume 100% full legal responsibility and liability for their use of this software. For complete terms, see the official [Legal Disclaimer & Acceptable Use Policy](DISCLAIMER.md).
@@ -233,7 +291,6 @@ Building and maintaining open-source tools with anti-blocking countermeasures, s
 If `ziara-lead-scrapper` saved your team hours of manual research or hundreds of dollars in API subscription fees, please consider supporting the project:
 
 [![GitHub Sponsors](https://img.shields.io/badge/Sponsor%20on%20GitHub-%E2%9D%A4-pink?style=for-the-badge&logo=github-sponsors)](https://github.com/sponsors/Aquil1401)
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-%E2%98%95-orange?style=for-the-badge&logo=buy-me-a-coffee)](https://buymeacoffee.com/techqlabs)
 
 - ⭐ **Star this repository** on GitHub to increase visibility.
 - 🐛 **Report issues** or feature requests on the [Issue Tracker](https://github.com/Aquil1401/ziara-lead-scrapper/issues).
