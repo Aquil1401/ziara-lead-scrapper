@@ -25,7 +25,7 @@ const banner = `
 ${chalk.cyan.bold('╔══════════════════════════════════════════════════╗')}
 ${chalk.cyan.bold('║')}   ${chalk.white.bold('⚡ ziara-lead-scrapper')} ${chalk.gray(`v${pkg.version}`)}                  ${chalk.cyan.bold('║')}
 ${chalk.cyan.bold('║')}   ${chalk.gray('Zero-config Google Maps lead scraper')}           ${chalk.cyan.bold('║')}
-${chalk.cyan.bold('║')}   ${chalk.gray('by TechQ Labs · github.com/TechQ-Labs')}         ${chalk.cyan.bold('║')}
+${chalk.cyan.bold('║')}   ${chalk.gray('by Ziara TechQ Labs · github.com/Aquil1401')}     ${chalk.cyan.bold('║')}
 ${chalk.cyan.bold('╚══════════════════════════════════════════════════╝')}
 `;
 
