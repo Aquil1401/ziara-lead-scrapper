@@ -1,0 +1,63 @@
+{
+  "name": "ziara-lead-scrapper",
+  "version": "1.0.0",
+  "description": "Zero-config, open-source Google Maps lead scraper CLI. No Docker. No Python. No paid APIs.",
+  "keywords": [
+    "google-maps",
+    "scraper",
+    "lead-generation",
+    "cli",
+    "playwright",
+    "npx",
+    "ziara"
+  ],
+  "author": "TechQ Labs <hello@techqlabs.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/Aquil1401/ziara-lead-scrapper#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aquil1401/ziara-lead-scrapper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Aquil1401/ziara-lead-scrapper/issues"
+  },
+  "type": "commonjs",
+  "main": "dist/bin/index.js",
+  "bin": {
+    "ziara-lead-scrapper": "./dist/bin/index.js"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "dev": "ts-node --project tsconfig.json bin/index.ts",
+    "start": "node dist/bin/index.js",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "csv-writer": "^1.6.0",
+    "ora": "^5.4.1",
+    "playwright": "^1.48.0",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "@types/node-fetch": "^2.6.11",
+    "rimraf": "^5.0.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  }
+}
