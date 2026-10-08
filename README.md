@@ -177,26 +177,27 @@ Scraping dynamic web applications requires evasion techniques to avoid IP rate l
 
 ## ⚖️ Legal, Ethical Use & Compliance
 
-Before deploying this tool, review and adhere to the following principles:
+> **IMPORTANT NOTICE:** This project is provided strictly for **educational, technical demonstration, and academic research purposes**. Users assume 100% full legal responsibility and liability for their use of this software. For complete terms, see the official [Legal Disclaimer & Acceptable Use Policy](DISCLAIMER.md).
 
-### 1. Public Data & Fair Use
-`ziara-lead-scrapper` is engineered solely to extract **publicly accessible commercial business data** that entities publish on public directories for discovery. It is not designed to bypass access controls, breach password-protected portals, or harvest private personal communications.
+### 1. Educational & Research Scope
+`ziara-lead-scrapper` serves as an educational demonstration of headless browser orchestration with Playwright. The developers and contributors do not host, store, sell, or collect any data scraped by end users. All extraction operations occur entirely locally on the user's machine.
 
 ### 2. Trademark Disclaimer
-*Google Maps™ is a trademark of Google LLC.* `ziara-lead-scrapper` is an independent open-source software project developed by **Ziara TechQ Labs** and is **not affiliated, endorsed, associated, authorized, or certified by Google LLC or Alphabet Inc.**
+*Google*, *Google Maps™*, *Chromium*, and other related marks are trademarks of **Google LLC** and **Alphabet Inc.** `ziara-lead-scrapper` is an independent open-source software utility developed by **Ziara TechQ Labs** and is **not affiliated with, endorsed by, sponsored by, or certified by Google LLC or Alphabet Inc.** Any reference to third-party services is strictly for descriptive identification (nominative fair use).
 
 ### 3. Data Protection & Cold Outreach Compliance
-If you use extracted lead data for marketing, recruitment, or sales outreach, you are solely responsible for compliance with relevant regional regulations:
-- **GDPR (European Union):** Ensure lawful basis (e.g., Legitimate Interest under Art. 6(1)(f)) for processing B2B contacts, honor opt-outs, and maintain data subject rights.
-- **CAN-SPAM Act (United States):** Provide clear identification, a physical mailing address, and a functional unsubscribe mechanism in commercial communications.
-- **CASL (Canada):** Ensure consent exemptions apply to corporate addresses before sending Commercial Electronic Messages (CEMs).
-- **CCPA / CPRA (California):** Honor requests to delete or opt-out of the sale/sharing of personal information.
+If you extract contact details for commercial or outreach purposes, you are solely responsible for compliance with relevant local and international statutes:
+- **GDPR (European Union):** Ensure a documented lawful basis (e.g., Legitimate Interest under Art. 6(1)(f)) for processing B2B contacts, honor opt-outs, and uphold data subject rights.
+- **CAN-SPAM Act (United States):** Provide honest email headers, non-deceptive subject lines, physical mailing address, and functional unsubscribe mechanisms.
+- **TCPA (United States):** Absolute prohibition against unsolicited automated dialing or SMS to telephone numbers without prior express consent.
+- **CASL (Canada):** Ensure commercial electronic messaging exemptions apply before communicating.
+- **CCPA / CPRA (California):** Honor consumer deletion and opt-out requests.
 
-### 4. Terms of Service & Rate Limiting
-Automated queries may conflict with specific platform Terms of Service. Always maintain reasonable rates, avoid aggressive concurrency, respect host resources, and do not use this software for denial-of-service, abusive scraping, or unlawful harassment.
+### 4. Terms of Service & User Responsibility
+Automated scraping may violate the Terms of Service of third-party platforms. By using this tool, you agree that you are solely responsible for ensuring your actions comply with all applicable terms, policies, and laws.
 
-### 5. Limitation of Liability
-*THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHORS, ZIARA TECHQ LABS, OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, ACCOUNT SUSPENSION, IP BAN, OR OTHER LIABILITY ARISING FROM THE USE OF THIS SOFTWARE.*
+### 5. Limitation of Liability & Indemnification
+*THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL THE AUTHORS, CONTRIBUTORS, OR ZIARA TECHQ LABS BE LIABLE FOR ANY CLAIM, DAMAGES, ACCOUNT SUSPENSION, IP BAN, REGULATORY FINES, OR OTHER LIABILITY ARISING FROM THE USE OF THIS SOFTWARE. USERS AGREE TO INDEMNIFY AND HOLD HARMLESS THE MAINTAINERS AGAINST ANY AND ALL CLAIMS ARISING FROM THEIR USE OF THIS TOOL.* Please read [DISCLAIMER.md](DISCLAIMER.md) for full legal terms.
 
 ---
 

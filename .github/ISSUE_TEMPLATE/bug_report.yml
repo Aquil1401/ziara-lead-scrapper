@@ -1,0 +1,34 @@
+name: Bug report
+description: Create a report to help us improve
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe what happened and what you expected.
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Command executed
+      description: The exact command line input you used.
+      placeholder: npx ziara-lead-scrapper -q "Dentists in South Delhi" -l 20
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Node version, OS, etc.
+      value: |
+        - OS: [e.g. Windows 11, macOS 14, Ubuntu 22.04]
+        - Node.js Version: [e.g. 20.11.0]
+        - ziara-lead-scrapper version: [e.g. 1.0.0]
+    validations:
+      required: true

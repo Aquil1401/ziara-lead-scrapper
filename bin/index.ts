@@ -48,6 +48,10 @@ ${chalk.bold('Examples:')}
   ${chalk.cyan('$')} npx ziara-lead-scrapper -q "Dentists in South Delhi" -l 50
   ${chalk.cyan('$')} npx ziara-lead-scrapper -q "SaaS Founders in Austin" -l 100 -o json --enrich
   ${chalk.cyan('$')} npx ziara-lead-scrapper -q "Coffee Shops in NYC" --headless false
+
+${chalk.bold('Disclaimer:')}
+  ${chalk.gray('For educational and research purposes only. Not affiliated with or endorsed by Google LLC.')}
+  ${chalk.gray('Users are solely responsible for compliance with website Terms of Service and data privacy laws (GDPR, CAN-SPAM, etc.).')}
   `
   )
   .parse(process.argv);
