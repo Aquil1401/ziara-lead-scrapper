@@ -2,7 +2,9 @@
 
 # ⚡ ziara-lead-scrapper
 
-**Zero-config Google Maps lead scraper CLI. No Docker. No Python. No paid APIs.**[![GitHub Stars](https://img.shields.io/github/stars/Aquil1401/ziara-lead-scrapper?style=flat-square&color=yellow)](https://github.com/Aquil1401/ziara-lead-scrapper/stargazers)
+**Zero-config Google Maps lead scraper CLI. No Docker. No Python. No paid APIs.**
+
+[![GitHub Stars](https://img.shields.io/github/stars/Aquil1401/ziara-lead-scrapper?style=flat-square&color=yellow)](https://github.com/Aquil1401/ziara-lead-scrapper/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18.0.0-339933?style=flat-square&logo=node.js)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
