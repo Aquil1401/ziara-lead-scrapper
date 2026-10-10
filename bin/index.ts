@@ -35,7 +35,9 @@ program
   .name('ziara-lead-scrapper')
   .description('Zero-config Google Maps lead scraper — no Docker, no Python, no paid APIs.')
   .version(pkg.version, '-v, --version', 'Output the current version')
-  .requiredOption('-q, --query <string>', 'Google Maps search query (e.g. "Dentists in South Delhi")')
+  .argument('[query]', 'Google Maps search query (e.g. "Dentists in South Delhi")')
+  .argument('[limit]', 'Maximum number of leads to collect')
+  .option('-q, --query <string>', 'Google Maps search query (e.g. "Dentists in South Delhi")')
   .option('-l, --limit <number>', 'Maximum number of leads to collect', '20')
   .option('-o, --output <string>', 'Output format: csv or json', 'csv')
   .option('--headless <boolean>', 'Run browser in headless mode', 'true')
@@ -45,9 +47,9 @@ program
     'after',
     `
 ${chalk.bold('Examples:')}
-  ${chalk.cyan('$')} npm start -- -q "Dentists in South Delhi" -l 50
-  ${chalk.cyan('$')} npm start -- -q "SaaS Founders in Austin" -l 100 -o json --enrich
-  ${chalk.cyan('$')} npm start -- -q "Coffee Shops in NYC" --headless false
+  ${chalk.cyan('$')} node dist/bin/index.js -q "Dentists in South Delhi" -l 50
+  ${chalk.cyan('$')} node dist/bin/index.js -q "SaaS Founders in Austin" -l 100 -o json --enrich
+  ${chalk.cyan('$')} node dist/bin/index.js -q "Coffee Shops in NYC" --headless false
 
 ${chalk.bold('Disclaimer:')}
   ${chalk.gray('For educational and research purposes only. Not affiliated with or endorsed by Google LLC.')}
@@ -61,9 +63,9 @@ const opts = program.opts();
 async function main(): Promise<void> {
   console.log(banner);
 
-  const query: string = (opts.query || '').trim();
+  const query: string = (opts.query || program.args[0] || '').trim();
   if (!query) {
-    console.error(chalk.red('  ✖  Search query cannot be empty. Specify a valid query with -q.'));
+    console.error(chalk.red('  ✖  Search query cannot be empty. Specify a valid query with -q or as an argument.'));
     process.exit(1);
   }
 
@@ -74,7 +76,8 @@ async function main(): Promise<void> {
   }
   const outputFormat: 'csv' | 'json' = rawOutput;
 
-  const limit: number = Math.max(1, parseInt(opts.limit, 10) || 20);
+  const limitArg = program.args[1] ? parseInt(program.args[1], 10) : NaN;
+  const limit: number = Math.max(1, !isNaN(limitArg) ? limitArg : (parseInt(opts.limit, 10) || 20));
   const headless: boolean = !(opts.headless === 'false' || opts.headless === false);
   const concurrency: number = Math.max(1, parseInt(opts.concurrency, 10) || 1);
   const enrich: boolean = Boolean(opts.enrich);

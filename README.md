@@ -75,7 +75,9 @@ cd ziara-lead-scrapper
 npm install
 npm run build
 
-# 3. Run the scraper
+# 3. Run the scraper (either command works):
+node dist/bin/index.js -q "Dentists in South Delhi" -l 50
+# or
 npm start -- -q "Dentists in South Delhi" -l 50
 ```
 
