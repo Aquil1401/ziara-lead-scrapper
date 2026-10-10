@@ -97,39 +97,39 @@ async function handleCookieConsent(page: Page): Promise<void> {
   }
 }
 
-async function scrollFeedToLimit(page: Page, limit: number): Promise<void> {
+async function collectListingUrls(page: Page, limit: number): Promise<string[]> {
   const feedSelector = 'div[role="feed"]';
   try {
     await page.waitForSelector(feedSelector, { timeout: 15000 });
   } catch {
-    return;
+    return await scrapeListingUrls(page, limit);
   }
 
-  let previousCount = 0;
+  const collectedUrls = new Set<string>();
   let stalledRounds = 0;
+  let previousSize = 0;
 
-  while (stalledRounds < 4) {
-    const currentCount = await page.$$eval(
-      'a[href*="/maps/place/"], div[role="article"]',
-      (els) => {
-        const seen = new Set<string>();
-        for (const el of els) {
-          const href = el.getAttribute('href');
-          if (href) seen.add(href);
-        }
-        return seen.size || els.length;
-      }
+  while (stalledRounds < 4 && collectedUrls.size < limit) {
+    // Accumulate all place links currently rendered in the feed DOM
+    const currentHrefs = await page.$$eval(
+      'a.hfpxzc, a[href*="/maps/place/"]',
+      (els) => els.map((el) => el.getAttribute('href')).filter((h): h is string => Boolean(h))
     );
 
-    if (currentCount >= limit) break;
+    for (const href of currentHrefs) {
+      collectedUrls.add(href);
+      if (collectedUrls.size >= limit) break;
+    }
 
-    if (currentCount === previousCount) {
+    if (collectedUrls.size >= limit) break;
+
+    if (collectedUrls.size === previousSize) {
       stalledRounds++;
     } else {
       stalledRounds = 0;
     }
 
-    previousCount = currentCount;
+    previousSize = collectedUrls.size;
 
     // Scroll feed via DOM and dispatch mouse wheel
     await page.evaluate((sel) => {
@@ -148,7 +148,7 @@ async function scrollFeedToLimit(page: Page, limit: number): Promise<void> {
       // ignore hover errors
     }
 
-    await randomDelay(900, 1800);
+    await randomDelay(800, 1600);
 
     // Check for "You've reached the end" notice
     const endText = await page.evaluate(() => {
@@ -157,6 +157,8 @@ async function scrollFeedToLimit(page: Page, limit: number): Promise<void> {
     });
     if (endText.toLowerCase().includes("you've reached the end")) break;
   }
+
+  return Array.from(collectedUrls).slice(0, limit);
 }
 
 async function extractDetailPane(page: Page): Promise<Partial<Lead>> {
@@ -318,17 +320,47 @@ export async function runScraper(
 ): Promise<Lead[]> {
   const { query, limit, headless, concurrency, enrich } = options;
 
-  const browser: Browser = await chromium.launch({
-    headless,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-blink-features=AutomationControlled',
-      '--disable-infobars',
-      '--window-size=1280,800',
-      '--disable-dev-shm-usage',
-    ],
-  });
+  const launchArgs = [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-blink-features=AutomationControlled',
+    '--disable-infobars',
+    '--window-size=1280,800',
+    '--disable-dev-shm-usage',
+  ];
+
+  let browser: Browser;
+  try {
+    browser = await chromium.launch({
+      headless,
+      args: launchArgs,
+    });
+  } catch (launchErr: any) {
+    const errText = String(launchErr?.message || '');
+    if (errText.includes("Executable doesn't exist") || errText.includes('playwright install')) {
+      try {
+        browser = await chromium.launch({
+          channel: 'chrome',
+          headless,
+          args: launchArgs,
+        });
+      } catch {
+        try {
+          browser = await chromium.launch({
+            channel: 'msedge',
+            headless,
+            args: launchArgs,
+          });
+        } catch {
+          throw new Error(
+            'Chromium browser not found. Please install Playwright Chromium by running:\n  npx playwright install chromium'
+          );
+        }
+      }
+    } else {
+      throw launchErr;
+    }
+  }
 
   const context: BrowserContext = await browser.newContext({
     userAgent: randomUserAgent(),
@@ -402,10 +434,7 @@ export async function runScraper(
     }
 
     onProgress('Scrolling feed to collect listings...', 0);
-    await scrollFeedToLimit(searchPage, limit);
-    await randomDelay(600, 1200);
-
-    const listingUrls = await scrapeListingUrls(searchPage, limit);
+    const listingUrls = await collectListingUrls(searchPage, limit);
     await searchPage.close();
 
     if (listingUrls.length === 0) {

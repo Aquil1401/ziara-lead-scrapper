@@ -2,17 +2,15 @@
 
 # ⚡ ziara-lead-scrapper
 
-**Zero-config Google Maps lead scraper CLI. No Docker. No Python. No paid APIs.**
-
-[![npm version](https://img.shields.io/npm/v/ziara-lead-scrapper?color=cyan&style=flat-square)](https://www.npmjs.com/package/ziara-lead-scrapper)
-[![npm downloads](https://img.shields.io/npm/dm/ziara-lead-scrapper?color=blue&style=flat-square)](https://www.npmjs.com/package/ziara-lead-scrapper)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+**Zero-config Google Maps lead scraper CLI. No Docker. No Python. No paid APIs.**[![GitHub Stars](https://img.shields.io/github/stars/Aquil1401/ziara-lead-scrapper?style=flat-square&color=yellow)](https://github.com/Aquil1401/ziara-lead-scrapper/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18.0.0-339933?style=flat-square&logo=node.js)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![Playwright](https://img.shields.io/badge/Playwright-Chromium-45ba4b?style=flat-square&logo=playwright)](https://playwright.dev/)
 [![GitHub Sponsors](https://img.shields.io/badge/Sponsor%20on%20GitHub-%E2%9D%A4-pink?style=flat-square&logo=github-sponsors)](https://github.com/sponsors/Aquil1401)
 
 <p align="center">
-  <a href="#-quickstart-zero-install">Quickstart</a> •
+  <a href="#-quickstart-clone--run">Quickstart</a> •
   <a href="#-why-it-exists">Why It Exists</a> •
   <a href="#-features">Features</a> •
   <a href="#️-options--flags">Options</a> •
@@ -41,13 +39,13 @@ Standard HTTP scrapers and AI chat models fail when querying Google Maps because
 
 Other open-source tools require complex setup: installing **Docker Desktop**, running background container daemons, or configuring Python virtual environments.
 
-`ziara-lead-scrapper` eliminates all friction: **one `npx` command executes everything locally** via native Playwright headless browser orchestration.
+`ziara-lead-scrapper` eliminates friction: execute locally via native Playwright headless browser orchestration with automated system browser fallback.
 
 ### 🥊 How It Compares
 
 | Feature | `ziara-lead-scrapper` | Other Scraper Kits | Paid Cloud Scraping SaaS |
 | :--- | :---: | :---: | :---: |
-| **Setup Friction** | **Zero (`npx`)** | High (Docker compose) | High (Sign up / Setup) |
+| **Setup Friction** | **Low (Clone & Run)** | High (Docker compose) | High (Sign up / Setup) |
 | **Docker Required?** | ❌ **No Docker** | ✅ Required | ❌ No |
 | **Python Required?** | ❌ **No Python** | Optional/Scripts | ❌ No |
 | **API Keys / Cost** | 🆓 **$0.00 / Free** | 🆓 Free | 💳 $49 – $299 / month |
@@ -58,24 +56,33 @@ Other open-source tools require complex setup: installing **Docker Desktop**, ru
 
 ---
 
-## 🚀 Quickstart (Zero Install)
+## 🚀 Quickstart (Clone & Run)
 
-Run instantly with `npx` (no prior installation needed):
+Run in 3 simple commands with Node.js 18+:
 
 ```bash
-npx ziara-lead-scrapper -q "Dentists in South Delhi" -l 50
+# 1. Clone the repository
+git clone https://github.com/Aquil1401/ziara-lead-scrapper.git
+cd ziara-lead-scrapper
+
+# 2. Install dependencies & build
+npm install
+npm run build
+
+# 3. Run the scraper
+npm start -- -q "Dentists in South Delhi" -l 50
 ```
 
-That's it. It spins up a managed headless Chromium browser, scrolls Google Maps listings, sanitizes data, and saves a ready-to-use CSV or JSON file right in your current directory.
+> **Note:** If Chromium is not already installed on your machine, Playwright will automatically use your installed Google Chrome or Microsoft Edge, or you can install Chromium binaries via `npx playwright install chromium`.
 
 ---
 
-## 📦 Global Installation
+## 🖥️ Global CLI Linking (Optional)
 
-If you prefer having the command available everywhere on your system:
+If you prefer having the `ziara-lead-scrapper` command available globally in any directory:
 
 ```bash
-npm install -g ziara-lead-scrapper
+npm link
 ```
 
 Then run from any terminal:
@@ -173,16 +180,16 @@ ziara-lead-scrapper -q "SaaS Founders in Austin" -l 100 --enrich -o json
 
 ```bash
 # 1. Quick test: Scrape 10 bakeries in Paris to CSV
-npx ziara-lead-scrapper -q "Bakeries in Paris" -l 10
+npm start -- -q "Bakeries in Paris" -l 10
 
 # 2. Lead Generation: Collect 100 marketing agencies in London with emails & socials
-npx ziara-lead-scrapper -q "Marketing Agencies in London" -l 100 --enrich -o json
+npm start -- -q "Marketing Agencies in London" -l 100 --enrich -o json
 
 # 3. High Volume: 100 real estate brokers in Miami saved as CSV
-npx ziara-lead-scrapper -q "Real Estate Brokers in Miami" -l 100 --enrich -o csv
+npm start -- -q "Real Estate Brokers in Miami" -l 100 --enrich -o csv
 
 # 4. Debug Mode: Open visible browser window (solve CAPTCHAs manually if needed)
-npx ziara-lead-scrapper -q "Gyms in Dubai" -l 20 --headless false
+npm start -- -q "Gyms in Dubai" -l 20 --headless false
 ```
 
 > **💡 Tip on Google Maps limits:** Google Maps naturally caps infinite scroll at ~120 listings per individual search query before reaching the end of results. To scrape hundreds or thousands of leads in a city, partition your queries into specific neighborhoods, sub-districts, or pincodes (e.g. `"Gyms in Downtown Miami"`, `"Gyms in Brickell"`, `"Gyms in Miami Beach"`).

@@ -45,9 +45,9 @@ program
     'after',
     `
 ${chalk.bold('Examples:')}
-  ${chalk.cyan('$')} npx ziara-lead-scrapper -q "Dentists in South Delhi" -l 50
-  ${chalk.cyan('$')} npx ziara-lead-scrapper -q "SaaS Founders in Austin" -l 100 -o json --enrich
-  ${chalk.cyan('$')} npx ziara-lead-scrapper -q "Coffee Shops in NYC" --headless false
+  ${chalk.cyan('$')} npm start -- -q "Dentists in South Delhi" -l 50
+  ${chalk.cyan('$')} npm start -- -q "SaaS Founders in Austin" -l 100 -o json --enrich
+  ${chalk.cyan('$')} npm start -- -q "Coffee Shops in NYC" --headless false
 
 ${chalk.bold('Disclaimer:')}
   ${chalk.gray('For educational and research purposes only. Not affiliated with or endorsed by Google LLC.')}
