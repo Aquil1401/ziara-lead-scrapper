@@ -11,6 +11,10 @@
 [![Playwright](https://img.shields.io/badge/Playwright-Chromium-45ba4b?style=flat-square&logo=playwright)](https://playwright.dev/)
 [![GitHub Sponsors](https://img.shields.io/badge/Sponsor%20on%20GitHub-%E2%9D%A4-pink?style=flat-square&logo=github-sponsors)](https://github.com/sponsors/Aquil1401)
 
+<br/><br/>
+<img src=".github/assets/social-preview.jpg" alt="ziara-lead-scrapper Preview Banner" width="800" style="border-radius: 10px;" />
+<br/><br/>
+
 <p align="center">
   <a href="#-quickstart-clone--run">Quickstart</a> •
   <a href="#-why-it-exists">Why It Exists</a> •
@@ -95,32 +99,11 @@ ziara-lead-scrapper -q "SaaS Founders in Austin" -l 100 --enrich -o json
 
 ---
 
-## 🖥️ CLI Preview
+## 🖥️ CLI Demo Preview
 
-```
-╔══════════════════════════════════════════════════╗
-║   ⚡ ziara-lead-scrapper v1.0.0                  ║
-║   Zero-config Google Maps lead scraper           ║
-║   by Ziara TechQ Labs · github.com/Aquil1401     ║
-╚══════════════════════════════════════════════════╝
-
-  📋 Configuration
-  ─────────────────────────────────────────
-  Query      : Dentists in South Delhi
-  Limit      : 50
-  Output     : CSV
-  Headless   : true
-  Concurrency: 1
-  Enrich     : true
-  ─────────────────────────────────────────
-
-  ✔ Scraping complete! Collected 50 leads.
-  ✔ Saved → ziara-dentists-in-south-delhi-2026-10-08T12-00-00.csv
-
-  ─────────────────────────────────────────
-  ✔  Done! 50 leads collected.
-  ─────────────────────────────────────────
-```
+<div align="center">
+  <img src=".github/assets/demo.gif" alt="ziara-lead-scrapper CLI Demo" width="850" style="border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.5);" />
+</div>
 
 ---
 
