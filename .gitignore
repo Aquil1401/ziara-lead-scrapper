@@ -16,6 +16,10 @@ yarn-error.log*
 *.pem
 *.key
 
+# Private internal playbooks & docs
+CLIENT_ACQUISITION_PLAYBOOK.md
+*PLAYBOOK*.md
+
 # Output data
 output/
 ziara-*.csv
