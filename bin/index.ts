@@ -148,8 +148,12 @@ async function main(): Promise<void> {
   console.log(chalk.gray('\n  ─────────────────────────────────────────'));
   console.log(`  ${chalk.green.bold('✔')}  Done! ${chalk.bold.white(String(leads.length))} leads collected.`);
   console.log(chalk.gray('  ─────────────────────────────────────────'));
+  console.log(chalk.yellow(`\n  ⚠  Notice: The output/ directory is refreshed on each scrape.`));
+  console.log(chalk.gray(`     Copy or move your report if you wish to keep it permanently.`));
   if (!enrich) {
     console.log(chalk.gray(`\n  💡 Tip: Run with ${chalk.cyan('--enrich')} to extract emails & socials from websites.\n`));
+  } else {
+    console.log('');
   }
 }
 

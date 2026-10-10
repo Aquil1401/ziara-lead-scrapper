@@ -17,6 +17,7 @@ yarn-error.log*
 *.key
 
 # Output data
+output/
 ziara-*.csv
 ziara-*.json
 *.csv

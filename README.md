@@ -161,6 +161,23 @@ ziara-lead-scrapper -q "SaaS Founders in Austin" -l 100 --enrich -o json
 
 ---
 
+## 📁 Output Location & Data Retention
+
+All extracted reports are automatically saved into a dedicated **`output/`** directory:
+
+```
+ziara-lead-scrapper/
+└── output/
+    └── ziara-dentists-in-south-delhi-2026-10-10T12-00-00.csv
+```
+
+> [!WARNING]
+> **Automatic Refresh Notice:** The `output/` folder is automatically cleaned before each new generation run to keep your workspace free of stale files.  
+> **Always copy or move your generated CSV/JSON report to another directory if you wish to keep it permanently.**  
+> Furthermore, `output/` is listed in `.gitignore` by default to ensure your lead data remains 100% private and is never accidentally committed to Git.
+
+---
+
 ## 💡 Practical Examples
 
 ```bash

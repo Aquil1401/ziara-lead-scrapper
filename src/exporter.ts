@@ -103,6 +103,23 @@ function exportJson(leads: Lead[], outputPath: string): void {
   fs.writeFileSync(outputPath, JSON.stringify(data, null, 2), 'utf-8');
 }
 
+function cleanOutputDirectory(outputDir: string): void {
+  if (fs.existsSync(outputDir)) {
+    const files = fs.readdirSync(outputDir);
+    for (const file of files) {
+      if (file.endsWith('.csv') || file.endsWith('.json')) {
+        try {
+          fs.unlinkSync(path.join(outputDir, file));
+        } catch {
+          // Ignore file locks or access errors
+        }
+      }
+    }
+  } else {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+}
+
 export async function exportLeads(
   leads: Lead[],
   format: 'csv' | 'json',
@@ -112,8 +129,11 @@ export async function exportLeads(
     throw new Error('No leads to export.');
   }
 
+  const outputDir = path.resolve(process.cwd(), 'output');
+  cleanOutputDirectory(outputDir);
+
   const filename = buildFilename(query, format);
-  const outputPath = path.resolve(process.cwd(), filename);
+  const outputPath = path.join(outputDir, filename);
 
   if (format === 'json') {
     exportJson(leads, outputPath);
